@@ -1,10 +1,11 @@
 <script>
 import axios from 'axios';
 import AppNavbar from './components/AppNavbar.vue';
+import ProjectsList from './components/projects/ProjectsList.vue';
 const baseApiUrl = 'http://127.0.0.1:8000/api/';
 export default {
   name: 'App',
-  components: { AppNavbar },
+  components: { AppNavbar, ProjectsList },
   data() {
     return {
       projects: []
@@ -25,6 +26,9 @@ export default {
 
 <template>
   <AppNavbar />
+  <main class="container">
+    <ProjectsList :projects="projects" />
+  </main>
 </template>
 
 <style></style>
