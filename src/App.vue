@@ -27,7 +27,8 @@ export default {
 <template>
   <AppNavbar />
   <main class="container">
-    <ProjectsList :projects="projects" />
+    <!-- <ProjectsList :projects="projects" /> -->
+    <RouterView />
   </main>
 </template>
 
