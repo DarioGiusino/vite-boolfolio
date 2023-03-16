@@ -1,8 +1,10 @@
 <script>
 import axios from 'axios';
+import AppNavbar from './components/AppNavbar.vue';
 const baseApiUrl = 'http://127.0.0.1:8000/api/';
 export default {
   name: 'App',
+  components: { AppNavbar },
   data() {
     return {
       projects: []
@@ -21,6 +23,8 @@ export default {
 }
 </script>
 
-<template></template>
+<template>
+  <AppNavbar />
+</template>
 
 <style></style>
