@@ -8,9 +8,9 @@ export default {
 </script>
 
 <template>
-    <section id="projects-list">
+    <section id="projects-list" class="mb-5">
         <h1 class="text-center mb-5">Projects List</h1>
-        <div class="row row-cols-4">
+        <div class="row row-cols-md-auto g-5 justify-content-center">
             <ProjectCard v-for="project in projects" :key="project.id" :project="project" />
         </div>
     </section>
