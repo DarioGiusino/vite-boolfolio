@@ -1,6 +1,5 @@
 <script>
 import axios from 'axios';
-import { provide } from 'vue';
 const baseApiUrl = 'http://127.0.0.1:8000/api/';
 
 export default {
@@ -28,11 +27,19 @@ export default {
 <template>
     <section id="project-details" class="mb-5">
         <!-- project title -->
-        <h1 class="text-center mb-5">{{ project.title }}</h1>
+        <h1 class="text-center mb-5">{{ project.title }} <sup><span class="badge rounded-pill"
+                    :style="`background-color: ${project.type.color}`">{{ project.type.label }}</span></sup></h1>
         <!-- project image -->
         <div class="img-box mb-5"></div>
         <!-- project content -->
         <p>{{ project.description }}</p>
+        <!-- project technologies -->
+        <div class="mb-2">
+            <h6 class="card-title mb-2">Used technologies:</h6>
+            <div><sup><span v-for="technologies in project.technologies" :key="technologies.id"
+                        class="badge rounded-pill me-1 mb-1" :style="`background-color: ${technologies.color}`">{{
+                            technologies.label }}</span></sup></div>
+        </div>
         <!-- project button&links -->
         <div class="project-buttons">
             <a class="me-3" href="">GitHub Link</a>
