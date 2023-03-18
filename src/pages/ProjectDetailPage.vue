@@ -6,16 +6,22 @@ export default {
     name: 'ProjectDetailPage',
     data() {
         return {
-            project: {}
+            project: {},
+            isLoading: false,
         }
     },
     methods: {
         fetchProject() {
-            axios.get(baseApiUrl + `projects/${this.$route.params.id}`).then(res => {
-                this.project = res.data;
-            }).catch(err => {
-                console.error(err);
-            })
+            this.isLoading = true,
+
+                axios.get(baseApiUrl + `projects/${this.$route.params.id}`).then(res => {
+                    this.project = res.data;
+                    this.isLoading = false;
+                }).catch(err => {
+                    console.error(err);
+                }).then(() => {
+                    this.isLoading = false;
+                })
         }
     },
     created() {
@@ -25,7 +31,8 @@ export default {
 </script>
 
 <template>
-    <section id="project-details" class="mb-5">
+    <AppLoader v-if="isLoading" />
+    <section v-else id="project-details" class="mb-5">
         <!-- project title -->
         <h1 class="text-center mb-5">{{ project.title }} <sup><span class="badge rounded-pill"
                     :style="`background-color: ${project.type.color}`">{{ project.type.label }}</span></sup></h1>

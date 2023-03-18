@@ -6,7 +6,8 @@ export default {
 
 <template>
     <div class="loader-overlay">
-        <div class="spinner-boarder" role="status"></div>
+        <div class="spinner-border" role="status">
+        </div>
     </div>
 </template>
 
@@ -25,10 +26,9 @@ export default {
     align-items: center;
     justify-content: center;
 
-    .spinner-boarder {
+    .spinner-border {
         width: 250px;
         height: 250px;
-        color: #fff;
     }
 }
 </style>
