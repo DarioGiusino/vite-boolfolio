@@ -1,22 +1,30 @@
 <script>
 import axios from 'axios';
 import ProjectsList from '../components/projects/ProjectsList.vue';
+import AppPagination from '../components/AppPagination.vue';
 const baseApiUrl = 'http://127.0.0.1:8000/api/';
 
 export default {
     name: 'HomaPage',
-    components: { ProjectsList },
+    components: { ProjectsList, AppPagination },
     data() {
         return {
-            projects: [],
+            projects: {
+                data: [],
+                links: []
+            },
             isLoading: false
         }
     },
     methods: {
-        fetchProjects() {
+        fetchProjects(endpoint = null) {
             this.isLoading = true;
-            axios.get(baseApiUrl + 'projects').then(res => {
-                this.projects = res.data;
+
+            if (!endpoint) endpoint = baseApiUrl + 'projects';
+
+            axios.get(endpoint).then(res => {
+                const { data, links } = res.data;
+                this.projects = { data, links };
                 this.isLoading = false;
             }).catch(err => {
                 console.error(err);
@@ -34,7 +42,10 @@ export default {
 
 <template>
     <AppLoader v-if="isLoading" />
-    <ProjectsList v-else :projects="projects" />
+    <div v-else>
+        <ProjectsList :projects="projects.data" />
+        <AppPagination :links="projects.links" @change-page="fetchProjects" />
+    </div>
 </template>
 
 <style></style>
