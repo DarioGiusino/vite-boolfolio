@@ -18,7 +18,7 @@ export default {
                     this.project = res.data;
                     this.isLoading = false;
                 }).catch(err => {
-                    console.error(err);
+                    this.$router.push({ name: 'error-404-page' })
                 }).then(() => {
                     this.isLoading = false;
                 })

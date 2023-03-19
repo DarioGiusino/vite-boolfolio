@@ -27,7 +27,7 @@ export default {
                 this.projects = { data, links };
                 this.isLoading = false;
             }).catch(err => {
-                console.error(err);
+                this.$router.push({ name: 'error-404-page' })
             }).then(() => {
                 this.isLoading = false;
             })
