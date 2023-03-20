@@ -14,7 +14,7 @@ export default {
         fetchProject() {
             this.isLoading = true,
 
-                axios.get(baseApiUrl + `projects/${this.$route.params.id}`).then(res => {
+                axios.get(baseApiUrl + `projects/${this.$route.params.slug}`).then(res => {
                     this.project = res.data;
                     this.isLoading = false;
                 }).catch(err => {

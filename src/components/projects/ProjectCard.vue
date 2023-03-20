@@ -29,7 +29,7 @@ export default {
                     </div>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
-                    <router-link :to="{ name: 'project-detail', params: { id: project.id } }"
+                    <router-link :to="{ name: 'project-detail', params: { slug: project.slug } }"
                         class="btn btn-sm btn-primary">Open</router-link>
                     <a href="#" class="card-link">Repo Link</a>
                 </div>
